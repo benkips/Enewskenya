@@ -1,11 +1,14 @@
 package com.mabnets.e_newskenya.Utils
 
+import android.app.PendingIntent
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.Fragment
+import androidx.navigation.NavDeepLinkBuilder
 import com.google.android.material.snackbar.Snackbar
-import www.digitalexperts.church_tracker.Network.Resource
+import com.mabnets.e_newskenya.Webactivity
 import java.io.IOException
 import java.net.URL
 
@@ -25,19 +28,7 @@ fun View.visible(isVisible: Boolean) {
     visibility = if (isVisible) View.VISIBLE else View.GONE
 }
 
-fun Fragment.handleApiError(
-    failure: Resource.Failure,
-    retry: (() -> Unit)? = null
-) {
-    when {
-        failure.isNetworkError -> requireView().snackbar("please check your internet", retry)
-        else -> {
-            val error = failure.errorBody?.string().toString()
-            requireView().snackbar(error)
-        }
 
-    }
-}
 
 fun getBitmapfromUrl(imageUrl: String?): Bitmap? {
     return try {
@@ -47,4 +38,15 @@ fun getBitmapfromUrl(imageUrl: String?): Bitmap? {
         System.out.println(e)
         null
     }
+}
+
+fun Context.gotomy(urlz:String?): PendingIntent {
+//        navController.navigate(R.id.live)
+    val bundle = Bundle()
+    bundle.putString("url",urlz)
+    val pendingintent= NavDeepLinkBuilder(this.applicationContext)
+        .setComponentName(Webactivity::class.java)
+        .setArguments(bundle)
+        .createPendingIntent()
+    return pendingintent
 }

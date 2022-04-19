@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.mabnets.e_newskenya.fragments.HomeFragment"
+        android:label="E-news"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/contacts"
+        android:name="com.mabnets.e_newskenya.fragments.Contacts"
+        android:label="E-news kenya"
+        tools:layout="@layout/fragment_contacts" />
+
+</navigation>

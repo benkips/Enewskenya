@@ -19,10 +19,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:iconTint="#fff"
+        android:layout_marginBottom="@dimen/_50sdp"
         app:icon="@drawable/ic_baseline_share_24"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
         android:backgroundTint="@color/teal_200"
+        />
+    <LinearLayout
+        android:id="@+id/banner_containertwo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         />
 </RelativeLayout>

@@ -17,10 +17,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EnewsKenya"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Webactivity"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar">
 
+        <activity
+            android:name=".index"
+            android:label="E-news kenya"
+            android:theme="@style/Theme.EnewsKenya.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4814079884774543~4334940372" />
+
+        <activity
+            android:name=".Webactivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar"></activity>
 
         <service
             android:name=".notifications.FirebaseService"
@@ -31,13 +46,6 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

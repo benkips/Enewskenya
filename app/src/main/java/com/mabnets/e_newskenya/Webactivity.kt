@@ -2,22 +2,32 @@ package com.mabnets.e_newskenya
 
 import android.content.Intent
 import android.graphics.Bitmap
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
 import android.webkit.WebChromeClient
+import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 import com.mabnets.e_newskenya.Utils.visible
 import com.mabnets.e_newskenya.databinding.ActivityWebactivityBinding
+import java.io.ByteArrayInputStream
+import java.io.InputStream
+
 
 class Webactivity : AppCompatActivity() {
+    private lateinit var adView: AdView
+    private lateinit var binding:ActivityWebactivityBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityWebactivityBinding.inflate(layoutInflater)
+         binding = ActivityWebactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         if (binding.wvvs != null) {
@@ -28,6 +38,8 @@ class Webactivity : AppCompatActivity() {
             if (url != null) {
                 binding.wvvs.loadUrl(url)
             }
+
+
 
             binding.wvvs.webViewClient = object : WebViewClient() {
                 override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
@@ -73,8 +85,35 @@ class Webactivity : AppCompatActivity() {
             binding.fbtn.setOnClickListener {
                 sharestuff(url!!)
             }
+
         }
+        adView = AdView(this)
+        binding.bannerContainertwo.addView(adView)
+        adView.adUnitId = "ca-app-pub-4814079884774543/2398966193"
+
+        adView.adSize = adSize
+        val adRequest = AdRequest
+            .Builder()
+            .build()
+        // Start loading the ad in the background.
+        adView.loadAd(adRequest)
     }
+    private val adSize: AdSize
+        get() {
+            val display =this.windowManager!!.defaultDisplay
+            val outMetrics = DisplayMetrics()
+            display.getMetrics(outMetrics)
+
+            val density = outMetrics.density
+
+            var adWidthPixels = binding.bannerContainertwo.width.toFloat()
+            if (adWidthPixels == 0f) {
+                adWidthPixels = outMetrics.widthPixels.toFloat()
+            }
+
+            val adWidth = (adWidthPixels / density).toInt()
+            return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth)
+        }
     private fun sharestuff(url:String){
         val sendIntent = Intent()
         sendIntent.action = Intent.ACTION_SEND

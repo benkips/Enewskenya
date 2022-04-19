@@ -1,13 +1,11 @@
-package www.digitalexperts.church_tracker.Network
+package com.mabnets.e_newskenya.Network
 
-import okhttp3.ResponseBody
 
-sealed  class Resource<out T>  {
-    data class  Success<out T>(val value: T):Resource<T>()
-    data class Failure(
-        val isNetworkError:Boolean,
-        val errorCode:Int?,
-        val errorBody: ResponseBody?
-    ):Resource<Nothing>()
-    object Loading:Resource<Nothing>()
+sealed class Resource<T>(
+    val data: T? = null,
+    val error: Throwable? = null
+) {
+    class Success<T>(data: T) : Resource<T>(data)
+    class Loading<T>(data: T? = null) : Resource<T>(data)
+    class Error<T>(throwable: Throwable, data: T? = null) : Resource<T>(data, throwable)
 }
