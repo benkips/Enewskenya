@@ -1,12 +1,14 @@
 package com.mabnets.e_newskenya.viewmodel
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.mabnets.e_newskenya.Network.Resource
 import com.mabnets.e_newskenya.Repo.Repostuff
 import com.mabnets.e_newskenya.models.Mydata
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class Newsviewmodel @ViewModelInject constructor(private  val repostuff: Repostuff) : ViewModel(){
+@HiltViewModel
+class Newsviewmodel @Inject constructor(private  val repostuff: Repostuff) : ViewModel(){
 
      lateinit var newsResponse: LiveData<Resource<List<Mydata>>>
 

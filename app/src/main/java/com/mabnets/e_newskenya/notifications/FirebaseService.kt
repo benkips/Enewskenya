@@ -15,7 +15,7 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.mabnets.e_newskenya.R
 import com.mabnets.e_newskenya.Utils.getBitmapfromUrl
-import com.mabnets.e_newskenya.index
+import com.mabnets.e_newskenya.Index
 import kotlin.random.Random
 
 private const val CHANNEL_ID="mychannel"
@@ -29,7 +29,7 @@ class FirebaseService : FirebaseMessagingService() {
             Log.d(TAG, "Message data payload: ${message.data["image"]}")
         }
 
-        val intent= Intent(this,index::class.java).putExtra("url",message.data.get("link").toString())
+        val intent= Intent(this,Index::class.java).putExtra("url",message.data.get("link").toString())
 
         val notificationmanager=getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notificationID= Random.nextInt()

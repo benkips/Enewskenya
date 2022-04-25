@@ -19,9 +19,10 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".index"
+            android:name=".Index"
             android:label="E-news kenya"
-            android:theme="@style/Theme.EnewsKenya.NoActionBar">
+            android:theme="@style/Theme.EnewsKenya.NoActionBar"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,7 +40,8 @@
 
         <service
             android:name=".notifications.FirebaseService"
-            android:permission="com.google.android.c2dm.permission.SEND">
+            android:permission="com.google.android.c2dm.permission.SEND"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />

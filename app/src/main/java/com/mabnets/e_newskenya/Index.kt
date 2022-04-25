@@ -18,7 +18,7 @@ import com.mabnets.e_newskenya.databinding.ActivityIndexBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class index : AppCompatActivity() {
+class Index : AppCompatActivity() {
     val TOPIC="Alertz"
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityIndexBinding

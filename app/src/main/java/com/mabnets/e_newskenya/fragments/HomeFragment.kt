@@ -7,7 +7,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.mabnets.e_newskenya.R
 import com.mabnets.e_newskenya.adapters.vpageradapter
 import com.mabnets.e_newskenya.databinding.FragmentHomeBinding
-import com.mabnets.e_newskenya.index
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private var _binding: FragmentHomeBinding? = null
