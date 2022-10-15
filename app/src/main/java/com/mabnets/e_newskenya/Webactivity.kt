@@ -87,7 +87,7 @@ class Webactivity : AppCompatActivity() {
             }
 
         }
-        adView = AdView(this)
+/*        adView = AdView(this)
         binding.bannerContainertwo.addView(adView)
         adView.adUnitId = "ca-app-pub-4814079884774543/2398966193"
 
@@ -96,9 +96,9 @@ class Webactivity : AppCompatActivity() {
             .Builder()
             .build()
         // Start loading the ad in the background.
-        adView.loadAd(adRequest)
+        adView.loadAd(adRequest)*/
     }
-    private val adSize: AdSize
+    /*private val adSize: AdSize
         get() {
             val display =this.windowManager!!.defaultDisplay
             val outMetrics = DisplayMetrics()
@@ -113,7 +113,7 @@ class Webactivity : AppCompatActivity() {
 
             val adWidth = (adWidthPixels / density).toInt()
             return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth)
-        }
+        }*/
     private fun sharestuff(url:String){
         val sendIntent = Intent()
         sendIntent.action = Intent.ACTION_SEND

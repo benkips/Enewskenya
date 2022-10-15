@@ -1,8 +1,6 @@
 package com.mabnets.e_newskenya.adapters
 
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.chayangkoon.champ.linkpreview.LinkPreview
-import com.google.android.ads.nativetemplates.NativeTemplateStyle
-import com.google.android.ads.nativetemplates.TemplateView
 import com.google.android.gms.ads.*
 import com.mabnets.e_newskenya.R
 import com.mabnets.e_newskenya.Webactivity
@@ -47,7 +43,7 @@ class Newsadapter(private val newsstuff:List<Mydata>) :
         if (holder !is NewsViewHolder) {
             return
         }
-        val itemPosition = position - position / 4
+        val itemPosition = position - position / 15
         val currentitem = newsstuff[itemPosition];
         if (currentitem != null) {
             holder.bind(currentitem)
@@ -57,12 +53,12 @@ class Newsadapter(private val newsstuff:List<Mydata>) :
 
     override fun getItemCount(): Int {
         var itemCount: Int = newsstuff.size
-        itemCount += itemCount / 4
+        itemCount += itemCount / 15
         return itemCount
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (position > 1 && position % 4 == 0) {
+        return if (position > 1 && position % 15 == 0) {
             AD_TYPE
         } else DEFAULT_VIEW_TYPE
     }
@@ -104,7 +100,7 @@ class Newsadapter(private val newsstuff:List<Mydata>) :
             linearbanner.addView(adView)
             adView.adUnitId = "ca-app-pub-4814079884774543/2398966193"
 
-            adView.adSize = AdSize.SMART_BANNER
+            adView.setAdSize(AdSize.BANNER)
             val adRequest = AdRequest
                 .Builder()
                 .build()
